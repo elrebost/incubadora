@@ -64,7 +64,7 @@ Create the file /etc/systemd/system/incubadora.service
 	[Install]
 	WantedBy=multi-user.target
 
-### And enable and start the service:
+### Enable and start the service:
 	sudo systemctl daemon-reload
 	sudo systemctl start incubadora.service
 	sudo systemctl status incubadora.service
