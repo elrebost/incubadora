@@ -22,8 +22,6 @@ Screen: 0.91 inch OLED display module white/blue
     https://github.com/rm-hull/luma.oled
     On MicroPython
     https://docs.micropython.org/en/latest/esp8266/tutorial/ssd1306.html
-Influxdb2:
-    User:mau	Organization:cafenet	Bucket:incubadora
 Relay: Any
 """
 import os
@@ -114,10 +112,6 @@ influx_query_api = influx_client.query_api()
 
 #Load the  Font
 font = ImageFont.truetype(FONT_PATH,FONT_SIZE)
-#with canvas(device) as draw:
-    #draw.rectangle(device.bounding_box, outline="white", fill="black")
-    #draw.text((0, 0), "Hello", font=font)
-    #draw.text((0, 35), "World", font=font)
 
 #Prepare the i2c and setup the ssd1306
 serial = i2c(port=1, address=0x3C)
@@ -158,19 +152,6 @@ while True:
     logger.debug(f"Sending data (humidity={humidity} temp={temperature} at {utc_datetime}) to influxdb at {INFLUX_HOST}")
     influx_write_api.write(INFLUX_BUCKET, INFLUX_ORG, [data])
 
-    '''
-    data_temperature = {"measurement": "incubadora_pollets", "tags": 
-            {"location": "incubadora_casa"}, "fields": {
-                "temperature": temperature},
-            "time": utc_datetime}
-    data_humidity = {"measurement": "incubadora_pollets", "tags": 
-            {"location": "incubadora_casa"}, "fields": {
-                "humidity": humidity},
-            "time": utc_datetime}
-    influx_write_api.write(INFLUX_BUCKET, INFLUX_ORG, [data_temperature])
-    influx_write_api.write(INFLUX_BUCKET, INFLUX_ORG, [data_humidity])
-    '''
-      
     # Enable relay to raise the temperature
     if temperature < TARGET_TEMPERATURE:
         print("Enabling the relay")
