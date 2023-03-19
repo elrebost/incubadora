@@ -57,7 +57,7 @@ Create the file /etc/systemd/system/incubadora.service
 	After=network-online.target
 	
 	[Service]
-	User=The_user
+	User=mau
 	ExecStart=/home/mau/scripts/incubadora/start.sh
 	Restart=on-failure
 
