@@ -61,9 +61,9 @@ else:
     logger.info(f"Logging to influx host {INFLUX_HOST}")
 
 DHT_SENSOR = Adafruit_DHT.AM2302
-TARGET_TEMPERATURE = 37.5
+TARGET_TEMPERATURE = 37.7
 TARGET_HUMIDITY = 50
-SAMPLING_RATE = 2
+SAMPLING_RATE = 6
 BEEP_TIME = 0.5
 FONT_PATH= f"{os.path.dirname(os.path.abspath(__file__))}/fonts/Arial.ttf"
 FONT_SIZE = 28
